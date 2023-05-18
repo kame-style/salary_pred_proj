@@ -90,3 +90,37 @@ mean_absolute_error(y_test,tpred_rf)
 
 mean_absolute_error(y_test,(tpred_lm+tpred_rf)/2)
 
+import pickle
+pickl = {'model': gs.best_estimator_}
+pickle.dump( pickl, open( 'model_file' + ".p", "wb" ) )
+
+file_name = "model_file.p"
+with open(file_name, 'rb') as pickled:
+    data = pickle.load(pickled)
+    model = data['model']
+
+model.predict(np.array(list(X_test.iloc[1,:])).reshape(1,-1))[0]
+
+list(X_test.iloc[1,:])
+
+##Commands To productionize using FLASK
+##
+##change directory to current 
+##>mkdir FlaskAPI  #to create a directory
+##>cd FlaskAPI
+##>conda create -n flask_env python=3.7
+##>conda activate flask_env
+##>conda install pandas
+##>conda install scikit-learn
+##>pip freeze > requirments.txt 
+###create some fiels 
+##>type nul >> "app.py"
+##>type nul >> "Procfile"
+##>type nul >> "wsgi.py"
+##>mkdir models
+###copy the code in appy.py and wsgi.py
+##>pyhon wsgi.py #to start the server
+##>from another anaconda prompt "curl -X GET http://0.0.0.0:8080/predict"
+## move model file in FlaskAPI/models
+##
+
