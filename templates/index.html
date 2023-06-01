@@ -1,0 +1,62 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon May 29 23:52:21 2023
+
+@author: HP
+"""
+
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Data science job salary predictor</h1>
+<!--
+    ['Rating', 'Size', 'Type of ownership', 'Sector', 'Revenue','num_comp', 'hourly', 'employer_provided','job_state',
+    'same_state','age', 'python_yn', 'spark', 'aws', 'excel','job_simp', 'seniority','desc_len']]
+-->
+<!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="Rating" placeholder="Rating" required="required" />
+		<input type="text" name="Size" placeholder="Size" required="required" />
+		<input type="text" name="Type of ownership" placeholder="Type of ownership" required="required" /> 
+        <input type="text" name="Sector" placeholder="Sector" required="required" />
+        <input type="text" name="Revenue" placeholder="Revenue" required="required" />
+		<input type="text" name="num_comp" placeholder="num_comp" required="required" />
+		<input type="text" name="hourly" placeholder="hourly" required="required" />
+		<input type="text" name="employer_provided" placeholder="employer_provided" required="required" />
+		<input type="text" name="job_state" placeholder="job_state" required="required" />
+		<input type="text" name="same_state" placeholder="HQ_same_state" required="required" />
+		<input type="text" name="age" placeholder="age" required="required" />
+		<input type="text" name="python_yn" placeholder="Python_req" required="required" />
+		<input type="text" name="spark" placeholder="spark_req" required="required" />
+		<input type="text" name="aws" placeholder="aws_req" required="required" />
+		<input type="text" name="excel" placeholder="excel_req" required="required" />
+		<input type="text" name="job_simp" placeholder="job_title" required="required" />
+		<input type="text" name="seniority" placeholder="seniority" required="required" />
+		<input type="text" name="desc_len" placeholder="desc_len" required="required" />
+		
+		
+        
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction }}
+
+ </div>
+
+
+</body>
+</html>
